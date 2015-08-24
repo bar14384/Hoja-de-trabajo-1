@@ -1,0 +1,93 @@
+/*
+ Miguel Godoy Garin 14425
+ Ricardo Galindo 14225
+ Michelle Bartra 14384
+ UVG Algoritmos y Estructura de Datos
+ Ejercicio 1: Radio
+ Main
+ */
+
+import java.util.Scanner;
+
+public class main{
+    public static void main(String[] args){
+        
+        //Inicializa variables
+        
+        Scanner teclado = new Scanner(System.in);//para poder leer el teclado
+        Radio1 radio = new Radio1(); //se inicializa donde se guarda la info del radio
+        
+        Radio1 emisoras[] = new Radio1[12];//gurada lo que hay en cada una de las emisoras del radio
+        
+        radio.getFrec(0);	//valores iniciales de la radio
+        radio.getAM(530);
+        radio.getFM(87.9);
+        
+        int n = 0;			// contador 1
+        int m = 0;                      //contador 2
+        int o = 0;                      //contador 3
+        int p = 0;                      //contador 4
+        int q = 0;                      //contador 5
+        
+        //Hace un ciclo infinito para seguir en la radio
+        
+        while(m==0){
+            
+            //Imprime el menu y el estado actual de la radio
+            System.out.println("");
+            System.out.println("RADIO");
+            System.out.println("");
+            System.out.println(radio.toString());
+            System.out.println("");
+            System.out.println("1. Encender/Apagar");
+            System.out.println("2. AM/FM");
+            System.out.println("3. Siguiente >>");
+            System.out.println("4. Guardar Emisora");
+            System.out.println("5. Seleccionar Emisora Guardada");
+            System.out.println("");
+            
+            //El usuario ingresa su opcion
+            n = teclado.nextInt();
+            
+            if (n==1){
+                //Mantiene la radio apagada hasta que el usuario ingrese 1
+                while(o!=1){
+                    System.out.println("---------- Radio apagada. Presione 1 para encender. ----------");
+                    o = teclado.nextInt();
+                }
+            }
+            
+            if (n==2){
+                //Cambia entre am y fm (utilizando numeros pares e impares)
+                p = p+1;
+                radio.getFrec(p);
+            }
+            
+            if (n==3){
+                //Aumenta la frecuencia utilizando el metodo getFrec de Radio
+                radio.setAMFM();
+            }
+            
+            if (n==4){
+                //Guarda el objeto radio actual en un lugar del vector Emisoras
+                System.out.println("Seleccione un espacio para guardar:");
+                System.out.println(" (1) (2) (3) (4) (5) (6) ");
+                System.out.println(" (7) (8) (9)(10) (11)(12)");
+                q = teclado.nextInt();
+                emisoras[q] = new Radio1();
+                emisoras[q] = radio;
+            }
+            
+            if (n==5){
+                //Toma un elemento del vector Emisoras y lo iguala al objeto radio actual
+                System.out.println("Seleccione una emisora guardada:");
+                System.out.println(" (1) (2) (3) (4) (5) (6) ");
+                System.out.println(" (7) (8) (9)(10) (11)(12)");
+                q = teclado.nextInt();
+                radio = emisoras[q];
+            }
+            
+        }
+        
+    }
+}
