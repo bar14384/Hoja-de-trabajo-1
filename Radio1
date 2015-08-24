@@ -1,0 +1,55 @@
+/*
+ Miguel Godoy Garin 14425
+ Ricardo Galindo 14225
+ Michelle Bartra 14384
+ UVG Algoritmos y Estructura de Datos
+ Ejercicio 1: Radio
+ Clase Radio
+ */
+
+class Radio1{
+    
+    private int frec; //la frenunecia de la radio
+    private int am; // la estacion en am
+    private double fm; //la estacion en fm
+    
+    //Recibe los valores para cada argumento de la clase
+    public void getFrec(int frec){
+        this.frec = frec;
+    }
+    public void getAM(int am){
+        this.am = am;
+    }
+    public void getFM(double fm){
+        this.fm = fm;
+    }
+    
+    //Aumenta el valor de am o de fm
+    public void setAMFM(){
+        if (frec%2==0){
+            am = am + 10;
+        }
+        else if (frec%2!=0){
+            fm = fm + 0.2;
+        }
+    }
+    
+    //Cambia entre am y fm dependiendo de la paridad del valor
+    @Override
+    public String toString(){
+        if (frec%2==0){
+            String a = "AM ";
+            a = a + Integer.toString(am);
+            return a;
+        }
+        else if (frec%2!=0){
+            String a = "FM ";
+            a = a + Double.toString(fm);
+            return a;
+        }
+        else{
+            return " ";
+        }
+    }
+}
+
